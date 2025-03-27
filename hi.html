@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Kimberly Cunanan</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Montserrat, sans-serif;
+        }
+        body {
+            background-color: #f5ebe0;
+            color: #5c3d2e;
+            overflow-x: hidden;
+        }
+        .portfolio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            margin: 100px auto 20px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .showcase-container {
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-items-wrapper {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .portfolio-item {
+            min-width: 100%;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .portfolio-item h3 {
+            margin: 10px 0 5px;
+        }
+        .portfolio-item p {
+            font-size: 0.9rem;
+        }
+        .nav-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-buttons button {
+            background-color: #5c3d2e;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .nav-buttons button:hover {
+            background-color: #697e5c;
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <div class="showcase-container">
+            <div class="portfolio-items-wrapper">
+                <div class="portfolio-item">
+                    <img src="attendify.jpg" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>Description of Project 1</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="attendify2.jpg" alt="Project 2">
+                    <h3>Project 2</h3>
+                    <p>Description of Project 2</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="project3.jpg" alt="Project 3">
+                    <h3>Project 3</h3>
+                    <p>Description of Project 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const showcaseWrapper = document.querySelector(".portfolio-items-wrapper");
+            const items = document.querySelectorAll(".portfolio-item");
+            let currentIndex = 0;
+
+            function showItem(index) {
+                showcaseWrapper.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            document.getElementById("next").addEventListener("click", () => {
+                currentIndex = (currentIndex + 1) % items.length;
+                showItem(currentIndex);
+            });
+
+            document.getElementById("prev").addEventListener("click", () => {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showItem(currentIndex);
+            });
+        });
+    </script>
+</body>
+</html>
